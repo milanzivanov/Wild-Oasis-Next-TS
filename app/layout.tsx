@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-y-scroll">
       <body
         className={`${josefinSans.className} relative bg-primary-950 text-primary-100 min-h-screen flex flex-col antialiased`}
       >

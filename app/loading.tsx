@@ -1,6 +1,6 @@
-import React from "react";
+import Spinner from "@/app/_components/Spinner";
 
-function Loading(): React.ReactElement {
-  return <p>Loading data...</p>;
+function Loading() {
+  return <Spinner />;
 }
 export default Loading;
