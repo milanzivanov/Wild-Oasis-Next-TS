@@ -1,9 +1,11 @@
-export type Cabins = {
+export type Cabin = {
+  created_at: string;
   id: number;
   name: string;
   maxCapacity: number;
   regularPrice: number;
   discount: number;
+  description: string;
   image: string;
   // add other properties as needed
 };

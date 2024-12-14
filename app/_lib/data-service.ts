@@ -20,22 +20,22 @@ export const getCabins = async function () {
 };
 
 
-// export async function getCabin(id) {
-//   const { data, error } = await supabase
-//     .from('cabins')
-//     .select('*')
-//     .eq('id', id)
-//     .single();
+export async function getCabin(id: string) {
+  const { data, error } = await supabase
+    .from('cabins')
+    .select('*')
+    .eq('id', id)
+    .single();
 
-//   // For testing
-//   // await new Promise((res) => setTimeout(res, 1000));
+  // For testing
+  // await new Promise((res) => setTimeout(res, 1000));
 
-//   if (error) {
-//     console.error(error);
-//   }
+  if (error) {
+    console.error(error);
+  }
 
-//   return data;
-// }
+  return data;
+}
 
 // export async function getCabinPrice(id) {
 //   const { data, error } = await supabase
@@ -139,17 +139,17 @@ export const getCabins = async function () {
 //   return data;
 // }
 
-// export async function getCountries() {
-//   try {
-//     const res = await fetch(
-//       'https://restcountries.com/v2/all?fields=name,flag'
-//     );
-//     const countries = await res.json();
-//     return countries;
-//   } catch {
-//     throw new Error('Could not fetch countries');
-//   }
-// }
+export async function getCountries() {
+  try {
+    const res = await fetch(
+      'https://restcountries.com/v2/all?fields=name,flag'
+    );
+    const countries = await res.json();
+    return countries;
+  } catch {
+    throw new Error('Could not fetch countries');
+  }
+}
 
 /////////////
 // CREATE
