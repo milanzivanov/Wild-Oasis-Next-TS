@@ -4,6 +4,7 @@ import { getCabin, getCabins } from "@/app/_lib/data-service";
 
 export async function generateMetadata({ params }: PageProps) {
   const cabin = await getCabin(params?.cabinId);
+
   return {
     title: `Cabin ${cabin?.name}`
   };
@@ -26,7 +27,7 @@ type PageProps = {
 };
 
 export default async function Page({ params }: PageProps) {
-  const cabin = await getCabin(params.cabinId);
+  const cabin = await getCabin(params?.cabinId);
 
   return (
     <div className="max-w-6xl mx-auto mt-8">

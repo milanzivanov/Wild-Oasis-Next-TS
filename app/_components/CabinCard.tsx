@@ -1,8 +1,8 @@
 import { UsersIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
-import { Cabins } from "@/app/types";
+import { Cabin } from "@/app/types";
 
-function CabinCard({ cabin }: { cabin: Cabins }) {
+function CabinCard({ cabin }: { cabin: Cabin }) {
   const { id, name, maxCapacity, regularPrice, discount, image } = cabin;
 
   return (

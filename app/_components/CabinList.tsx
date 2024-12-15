@@ -1,9 +1,12 @@
+// import { unstable_noStore as noStore } from "next/cache";
+import { Cabin } from "@/app/types";
 import CabinCard from "../_components/CabinCard";
-import { Cabins } from "@/app/types";
 
 import { getCabins } from "../_lib/data-service";
 
 async function CabinList() {
+  // noStore();
+
   const cabins = await getCabins();
 
   if (!cabins) {
@@ -13,7 +16,7 @@ async function CabinList() {
   return (
     <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 xl:gap-14">
       {cabins.map((cabin) => (
-        <CabinCard cabin={cabin as Cabins} key={cabin.id} />
+        <CabinCard cabin={cabin as Cabin} key={cabin.id} />
       ))}
     </div>
   );
