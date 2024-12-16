@@ -7,7 +7,6 @@ export type Cabin = {
   discount: number;
   description: string;
   image: string;
-  // add other properties as needed
 };
 
 export type Booking = {
