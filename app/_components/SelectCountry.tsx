@@ -2,7 +2,6 @@
 
 "use client";
 import { getCountries } from "@/app/_lib/data-service";
-// import { SelectCountryProps } from "@/app/types";
 
 import { useEffect, useState } from "react";
 
@@ -61,6 +60,7 @@ function SelectCountry({
   );
 }
 
+// js version
 // function SelectCountry({
 //   defaultCountry,
 //   name,
