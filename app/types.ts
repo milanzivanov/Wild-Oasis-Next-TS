@@ -31,3 +31,11 @@ export type SelectCountryProps = {
   id: string;
   className: string;
 };
+
+export type SettingsProps =  {
+  id: number;
+  created_at: string;
+  minBookingLength: number; 
+  maxBookingLength: number;
+  breakfastPrice: number; 
+}

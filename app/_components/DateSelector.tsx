@@ -1,18 +1,29 @@
-import { isWithinInterval } from "date-fns";
+"use client";
+
+// import { isWithinInterval } from "date-fns";
+import { SettingsProps, Cabin } from "@/app/types";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 
-function isAlreadyBooked(range, datesArr) {
-  return (
-    range.from &&
-    range.to &&
-    datesArr.some((date) =>
-      isWithinInterval(date, { start: range.from, end: range.to })
-    )
-  );
-}
+// function isAlreadyBooked(range: { from: Date; to: Date }, datesArr: Date[]) {
+//   return (
+//     range.from &&
+//     range.to &&
+//     datesArr.some((date) =>
+//       isWithinInterval(date, { start: range.from, end: range.to })
+//     )
+//   );
+// }
 
-function DateSelector() {
+function DateSelector({
+  settings,
+  bookedDates,
+  cabin
+}: {
+  settings: SettingsProps;
+  bookedDates: Date[];
+  cabin: Cabin;
+}) {
   // CHANGE
   const regularPrice = 23;
   const discount = 23;
@@ -21,17 +32,15 @@ function DateSelector() {
   const range = { from: null, to: null };
 
   // SETTINGS
-  const minBookingLength = 1;
-  const maxBookingLength = 23;
+  const { minBookingLength, maxBookingLength } = settings;
 
   return (
     <div className="flex flex-col justify-between">
       <DayPicker
-        className="pt-12 place-self-center"
+        className="py-12 place-self-center"
         mode="range"
         min={minBookingLength + 1}
         max={maxBookingLength}
-        fromMonth={new Date()}
         fromDate={new Date()}
         toYear={new Date().getFullYear() + 5}
         captionLayout="dropdown"
@@ -64,12 +73,19 @@ function DateSelector() {
               </p>
             </>
           ) : null}
+          {/* for testing purpuses not part of the project */}
+          <div>
+            <h4>{cabin.name}</h4>
+            {bookedDates.length > 0 && (
+              <p>Warning: Some dates are already booked.</p>
+            )}
+          </div>
         </div>
 
         {range.from || range.to ? (
           <button
             className="border border-primary-800 py-2 px-4 text-sm font-semibold"
-            onClick={() => resetRange()}
+            // onClick={() => resetRange()}
           >
             Clear
           </button>

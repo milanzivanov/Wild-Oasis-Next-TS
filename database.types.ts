@@ -143,7 +143,7 @@ export type Database = {
       }
       settings: {
         Row: {
-          brekfastPrice: number | null
+          breakfastPrice: number | null
           created_at: string
           id: number
           maxBookingLength: number | null
@@ -151,7 +151,7 @@ export type Database = {
           minBookingLength: number | null
         }
         Insert: {
-          brekfastPrice?: number | null
+          breakfastPrice?: number | null
           created_at?: string
           id?: number
           maxBookingLength?: number | null
@@ -159,7 +159,7 @@ export type Database = {
           minBookingLength?: number | null
         }
         Update: {
-          brekfastPrice?: number | null
+          breakfastPrice?: number | null
           created_at?: string
           id?: number
           maxBookingLength?: number | null
