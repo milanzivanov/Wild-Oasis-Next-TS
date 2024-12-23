@@ -2,9 +2,9 @@ import { Josefin_Sans } from "next/font/google";
 
 const josefinSans = Josefin_Sans({ subsets: ["latin"], display: "swap" });
 
-import "@/app/_styles/globals.css";
 import Header from "./_components/Header";
 
+import "@/app/_styles/globals.css";
 export const metadata = {
   title: {
     template: "%s | The Wild Oasis",

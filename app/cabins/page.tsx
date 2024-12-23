@@ -10,16 +10,15 @@ export const metadata = {
   title: "Cabins"
 };
 
-type SearchParams = {
-  capacity: string;
+type Props = {
+  params: Promise<{ cabinId: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
-export default async function Page({
-  searchParams
-}: {
-  searchParams: SearchParams;
-}) {
-  const filter = searchParams?.capacity ?? "all";
+export default async function Page({ searchParams }: Props) {
+  const sp = await searchParams;
+
+  const filter = (sp.capacity as string) ?? "all";
 
   return (
     <div>

@@ -5,12 +5,12 @@ import Spinner from "@/app/_components/Spinner";
 import Cabin from "@/app/_components/Cabin";
 import { Cabin as CabinType } from "@/app/types";
 
-type PageProps = {
-  cabinId: string;
+type Props = {
+  params: Promise<{ cabinId: string }>;
 };
 
-export async function generateMetadata({ params }: { params: PageProps }) {
-  const cabin = await getCabin(params?.cabinId);
+export async function generateMetadata({ params }: Props) {
+  const cabin = await getCabin((await params).cabinId);
 
   return {
     title: `Cabin ${cabin?.name}`
@@ -25,8 +25,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Page({ params }: { params: PageProps }) {
-  const { cabinId } = params;
+export default async function Page({ params }: Props) {
+  const { cabinId } = await params;
 
   const cabin = await getCabin(cabinId);
 
