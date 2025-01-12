@@ -1,3 +1,4 @@
+
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 
@@ -10,12 +11,10 @@ const authConfig = {
     // ...add more providers here
   ],
   callbacks: {
-    authorized({auth, request}) {
+    authorized({auth}) {
       // convert any value to boolean
       return !!auth?.user;
     }
-      
-  
   }
 };
 

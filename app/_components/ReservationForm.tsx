@@ -3,6 +3,7 @@
 import { Cabin } from "@/app/types";
 import { useReservation } from "./ReservationContext";
 import { User } from "next-auth";
+import Image from "next/image";
 
 function ReservationForm({ cabin, user }: { cabin: Cabin; user: User }) {
   const { range } = useReservation();
@@ -14,12 +15,13 @@ function ReservationForm({ cabin, user }: { cabin: Cabin; user: User }) {
         <p>Logged in as</p>
 
         <div className="flex gap-4 items-center">
-          <img
-            // Important to display google profile images
+          <Image
+            src={user.image || ""}
+            alt={user.name || "User"}
+            width={32} // Set the width to match the desired size
+            height={32} // Set the height to match the desired size
+            className="rounded-full"
             referrerPolicy="no-referrer"
-            className="h-8 rounded-full"
-            src={user.image}
-            alt={user.name}
           />
           <p>{user.name}</p>
         </div>
