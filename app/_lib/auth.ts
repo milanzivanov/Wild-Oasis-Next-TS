@@ -1,5 +1,5 @@
 
-import NextAuth from "next-auth";
+import NextAuth, { Session } from "next-auth";
 import Google from "next-auth/providers/google";
 
 const authConfig = {
@@ -10,12 +10,13 @@ const authConfig = {
     })
     // ...add more providers here
   ],
-  callbacks: {
-    authorized({auth}) {
-      // convert any value to boolean
-      return !!auth?.user;
-    }
-  },
+callbacks: {
+  authorized: async ({ auth }: {  auth: Session | null }) => {
+    // convert any value to boolean
+    // console.log(auth);
+    return !!auth?.user;
+  }
+},
   pages: {
     signIn: "/login"
   }
