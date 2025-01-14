@@ -60,8 +60,6 @@
 //   );
 // }
 
-import { getCabins } from "@/app/_lib/data-service";
-
 type Props = {
   params: Promise<{ cabinId: string }>;
 };
@@ -74,13 +72,13 @@ type Props = {
 //   };
 // }
 
-export async function generateStaticParams() {
-  const cabins = await getCabins();
+// export async function generateStaticParams() {
+//   const cabins = await getCabins();
 
-  return cabins.map((cabin) => ({
-    params: { cabinId: cabin.id.toString() }
-  }));
-}
+//   return cabins.map((cabin) => ({
+//     params: { cabinId: cabin.id.toString() }
+//   }));
+// }
 
 export default async function Page({ params }: Props) {
   const { cabinId } = await params;
