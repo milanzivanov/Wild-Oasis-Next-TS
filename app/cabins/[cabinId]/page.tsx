@@ -5,6 +5,8 @@
 // import Cabin from "@/app/_components/Cabin";
 // import { Cabin as CabinType } from "@/app/types";
 
+import { getCabins } from "@/app/_lib/data-service";
+
 // type Props = {
 //   params: Promise<{ cabinId: string }>;
 // };
@@ -72,16 +74,16 @@ type Props = {
 //   };
 // }
 
-// export async function generateStaticParams() {
-//   const cabins = await getCabins();
+export async function generateStaticParams() {
+  const cabins = await getCabins();
 
-//   return cabins.map((cabin) => ({
-//     params: { cabinId: cabin.id.toString() }
-//   }));
-// }
+  return cabins.map((cabin) => ({
+    params: { cabinId: cabin.id.toString() }
+  }));
+}
 
 export default async function Page({ params }: Props) {
   const { cabinId } = await params;
 
-  return <div>hello world {cabinId}</div>;
+  return <div>hello world A {cabinId}</div>;
 }
