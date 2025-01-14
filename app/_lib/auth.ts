@@ -3,8 +3,6 @@ import NextAuth, { Session, User } from "next-auth";
 import Google from "next-auth/providers/google";
 import { createGuest, getGuest } from "./data-service";
 
-
-
 const authConfig = {
   providers: [
     Google({
@@ -16,7 +14,6 @@ const authConfig = {
 callbacks: {
   authorized: async ({ auth }: {  auth: Session | null }) => {
     // convert any value to boolean
-    // console.log(auth);
     return !!auth?.user;
   },
   async signIn({ user } : { user: User }) {
@@ -39,7 +36,6 @@ callbacks: {
         session.user.id = guest?.id?.toString();
       }
       return session;
-      // console.log("/////////////", typeof session.user?.id);
     },
   },
   pages: {

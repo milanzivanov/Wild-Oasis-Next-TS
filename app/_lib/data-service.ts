@@ -2,7 +2,6 @@ import { eachDayOfInterval } from 'date-fns';
 
 import { notFound } from "next/navigation";
 import { supabase } from "./supabase";
-// import { User } from 'next-auth';
 import { Guest } from '../types';
 
 /////////////

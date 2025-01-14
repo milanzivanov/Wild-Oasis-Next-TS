@@ -1,4 +1,4 @@
-import { getCabin } from "@/app/_lib/data-service";
+import { getCabin, getCabins } from "@/app/_lib/data-service";
 import Reservation from "@/app/_components/Reservation";
 import { Suspense } from "react";
 import Spinner from "@/app/_components/Spinner";
@@ -17,14 +17,12 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
-// ??
-// export async function generateStaticParams() {
-//   const cabins = await getCabins();
-
-//   return cabins.map((cabin) => ({
-//     params: { cabinId: cabin.id.toString() }
-//   }));
-// }
+// lockaly it si workin but in production it dos not
+export async function generateStaticParams() {
+  const cabins = await getCabins();
+  const ids = cabins.map((cabin) => ({ cabinId: cabin.id.toString() }));
+  return ids;
+}
 
 export default async function Page({ params }: Props) {
   const { cabinId } = await params;
