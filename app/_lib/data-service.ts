@@ -2,6 +2,8 @@ import { eachDayOfInterval } from 'date-fns';
 
 import { notFound } from "next/navigation";
 import { supabase } from "./supabase";
+// import { User } from 'next-auth';
+import { Guest } from '../types';
 
 /////////////
 // GET
@@ -56,16 +58,16 @@ export async function getCabin(id: string) {
 
 
 // Guests are uniquely identified by their email address
-// export async function getGuest(email) {
-//   const { data, error } = await supabase
-//     .from('guests')
-//     .select('*')
-//     .eq('email', email)
-//     .single();
+export async function getGuest(email: string) {
+  const { data } = await supabase
+    .from('guests')
+    .select('*')
+    .eq('email', email)
+    .single();
 
-//   // No error here! We handle the possibility of no guest in the sign in callback
-//   return data;
-// }
+  // No error here! We handle the possibility of no guest in the sign in callback
+  return data;
+}
 
 // export async function getBooking(id) {
 //   const { data, error, count } = await supabase
@@ -158,16 +160,16 @@ export async function getCountries() {
 /////////////
 // CREATE
 
-// export async function createGuest(newGuest) {
-//   const { data, error } = await supabase.from('guests').insert([newGuest]);
+export async function createGuest(newGuest: Guest ) {
+  const { data, error } = await supabase.from('guests').insert([newGuest]);
 
-//   if (error) {
-//     console.error(error);
-//     throw new Error('Guest could not be created');
-//   }
+  if (error) {
+    console.error(error);
+    throw new Error('Guest could not be created');
+  }
 
-//   return data;
-// }
+  return data;
+}
 
 // export async function createBooking(newBooking) {
 //   const { data, error } = await supabase

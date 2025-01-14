@@ -39,3 +39,16 @@ export type SettingsProps =  {
   maxBookingLength: number;
   breakfastPrice: number; 
 }
+
+export type Guest = {
+  id?: number;
+  email: string;
+  fullName?: string;
+  // Add other properties as needed
+}
+
+// export type User = {
+//   name: string;
+//   email: string;
+//   image: string;
+// };
