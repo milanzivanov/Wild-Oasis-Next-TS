@@ -17,6 +17,7 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
+// ??
 // export async function generateStaticParams() {
 //   const cabins = await getCabins();
 

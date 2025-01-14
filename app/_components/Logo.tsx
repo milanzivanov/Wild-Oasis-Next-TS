@@ -16,7 +16,7 @@ function Logo() {
         priority
       />
       <span className="text-xl font-semibold text-primary-100">
-        The Wild Oasis 123
+        The Wild Oasis
       </span>
     </Link>
   );
