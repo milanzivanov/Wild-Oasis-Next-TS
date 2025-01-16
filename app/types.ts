@@ -11,18 +11,17 @@ export type Cabin = {
 
 export type Booking = {
   id: number;
-  guestId: number;
-  startDate: string;
-  endDate: string;
-  numNights: number;
-  totalPrice: number;
-  numGuests: number;
-  status: string;
+  guestId: number | null;
+  startDate: string | null;
+  endDate: string | null;
+  numNights: number   | null;
+  totalPrice: number | null;
+  numGuests: number | null;
+  status?: string | null;
   created_at: string;
-  cabins: {
-    name: string;
-    image: string;
-  };
+  cabins: { 
+    name: string | null; 
+    image: string | null; } | null
 };
 
 export type SelectCountryProps = {
