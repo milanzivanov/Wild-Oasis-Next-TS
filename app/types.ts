@@ -20,8 +20,8 @@ export type Booking = {
   status?: string | null;
   created_at: string;
   cabins: { 
-    name: string | null; 
-    image: string | null; } | null
+    name?: string | null; 
+    image?: string | null; } | null
 };
 
 export type SelectCountryProps = {
