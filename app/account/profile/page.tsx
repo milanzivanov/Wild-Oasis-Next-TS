@@ -5,6 +5,7 @@ import SelectCountry from "@/app/_components/SelectCountry";
 import UpdateProfileForm from "@/app/_components/UpdateProfileForm";
 import { auth } from "@/app/_lib/auth";
 import { getGuest } from "@/app/_lib/data-service";
+import { Guest } from "@/app/types";
 
 export const metadata = {
   title: "Update profile"
@@ -13,6 +14,8 @@ export const metadata = {
 export default async function Page() {
   const session = await auth();
   const guest = await getGuest(session?.user?.email || "");
+
+  // console.log("//////////", guest);
 
   return (
     <div className="px-10">
@@ -25,7 +28,7 @@ export default async function Page() {
         faster and smoother. See you soon!
       </p>
 
-      <UpdateProfileForm guest={guest}>
+      <UpdateProfileForm guest={guest as Guest}>
         <SelectCountry
           name="nationality"
           id="nationality"

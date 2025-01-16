@@ -5,14 +5,7 @@
 import Image from "next/image";
 import { updateGuest } from "../_lib/actions";
 import { useFormStatus } from "react-dom";
-
-type Guest = {
-  fullName?: string;
-  email?: string;
-  nationality?: string;
-  nationalID?: string;
-  countryFlag?: string;
-};
+import { Guest } from "../types";
 
 function UpdateProfileForm({
   guest,

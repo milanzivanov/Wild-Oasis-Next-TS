@@ -41,9 +41,11 @@ export type SettingsProps =  {
 }
 
 export type Guest = {
+  id?: number;
+  created_at?: string;
   fullName?: string;
   email?: string;
-  nationality?: string;
   nationalID?: string;
+  nationality?: string;
   countryFlag?: string;
 };
