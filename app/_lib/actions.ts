@@ -5,8 +5,8 @@ import { auth, signIn, signOut } from "./auth";
 import { supabase } from "./supabase";
 import { getBookings } from "./data-service";
 
+// update guest
 export async function updateGuest(formData: FormData) {
-  // console.log(formData);
   const session = await auth();
 
   if (!session) throw new Error("You are not logged in");
@@ -19,9 +19,7 @@ export async function updateGuest(formData: FormData) {
 
     const updateData = { nationality, countryFlag, nationalID };
 
-    // console.log(updateData);
-
-  const { data, error } = await supabase
+  const {error } = await supabase
     .from('guests')
     .update(updateData)
     .eq('id', session.user?.id || "")
@@ -31,8 +29,7 @@ export async function updateGuest(formData: FormData) {
   if (error) throw new Error('Guest could not be updated');
   
   revalidatePath("/account/profile");
-  
-  return data;
+
 }
 
 // delete reservation 
@@ -49,10 +46,10 @@ export async function deleteReservation(bookingId: number) {
     const { error } = await supabase.from('bookings').delete().eq('id', bookingId);
 
   if (error) {
-    console.error(error);
     throw new Error('Booking could not be deleted');
   }
 
+  // update UI
   revalidatePath("/account/reservations");
 
 }
