@@ -68,20 +68,20 @@ export async function getGuest(email: string) {
   return data;
 }
 
-// export async function getBooking(id) {
-//   const { data, error, count } = await supabase
-//     .from('bookings')
-//     .select('*')
-//     .eq('id', id)
-//     .single();
+export async function getBooking(id:number) {
+  const { data, error } = await supabase
+    .from('bookings')
+    .select('*')
+    .eq('id', id)
+    .single();
 
-//   if (error) {
-//     console.error(error);
-//     throw new Error('Booking could not get loaded');
-//   }
+  if (error) {
+    console.error(error);
+    throw new Error('Booking could not get loaded');
+  }
 
-//   return data;
-// }
+  return data;
+}
 
 export async function getBookings(guestId: string | number) {
   const { data, error } = await supabase
